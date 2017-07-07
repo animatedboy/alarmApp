@@ -1,0 +1,202 @@
+/* BASIC STYLINGS
+============================================================================= */
+
+html,
+body,
+body>div {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    padding-top: 20px;
+    background: #F9F0F0;
+}
+
+.navbar {
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.navbar a:focus {
+    outline: 0;
+}
+
+.navbar .navbar-nav {
+    letter-spacing: 1px;
+}
+
+.navbar .navbar-nav li a:focus {
+    outline: 0;
+}
+
+.imgSize {
+    width: 30px;
+    height: 30px
+}
+
+.margin-1 {
+    margin: 50px;
+}
+
+.col-offeset-1 {
+    margin: 0 8.333%;
+}
+
+.margin-tp-1 {
+    margin-top: 50px;
+}
+
+#form-container .page-header {
+    /*background: #151515;*/
+    margin: 0;
+    padding: 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+/* _Table : table Header color*/
+
+.table {
+    font-size: 12px;
+}
+
+.table-format th {
+    color: #FFF;
+    background: #e44230;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.table-format tbody tr td {
+    color: #52617a;
+    vertical-align: middle;
+}
+
+.table-format tbody tr td p {
+    font-size: 12px;
+}
+
+.table-format tbody tr td.title {
+    color: #003F88;
+}
+
+.table-format tbody tr td.orange {
+    color: #f7941d;
+}
+
+.table-format.table>thead>tr>th {
+    vertical-align: middle;
+}
+
+.table-format tr.cust-head th {
+    background: #94a9c6;
+    color: #ffffff;
+}
+
+.table-format tr.highlight {
+    background: #d8f4ff;
+}
+
+.table-format>tbody+tbody {
+    border-top: 1px solid #eaeaea !important;
+}
+
+.table-bordered>thead>tr>th {
+    border-bottom-width: 1px;
+    font-size: 12px;
+}
+
+.table-no-border {
+    border: 1px solid #ddd;
+}
+
+.table-no-border.table>thead>tr>th,
+.table-no-border.table>tbody>tr>th,
+.table-no-border.table>tfoot>tr>th,
+.table-no-border.table>thead>tr>td,
+.table-no-border.table>tbody>tr>td,
+.table-no-border.table>tfoot>tr>td {
+    border: none;
+}
+
+.table-right-border.table>thead>tr>th,
+.table-right-border.table>tbody>tr>th,
+.table-right-border.table>tfoot>tr>th,
+.table-right-border.table>thead>tr>td,
+.table-right-border.table>tbody>tr>td,
+.table-right-border.table>tfoot>tr>td {
+    border: 0;
+    border-right: 1px solid #ddd;
+}
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    display: none;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

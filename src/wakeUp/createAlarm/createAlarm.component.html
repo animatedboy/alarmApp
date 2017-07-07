@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Alarm</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row">
+        <label for="label" class="col-2 col-form-label">Label</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="alarm.label" id="label">
+        </div>
+    </div>
+    <div>
+        <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-8 col-form-label">Repeat</label>
+        <div class="col-4">
+            <label class="form-check-label switch pull-right">
+               <input class="form-check-input" type="checkbox" [(ngModel)]="alarm.isRepeat">
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </div>
+    <div class="form-group" *ngIf="isRepeat">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary" [class.active]="alarm.repeatOn.sun">
+               <input type="checkbox" [(ngModel)]="alarm.repeatOn.sun"> Sun
+            </label>
+            <label class="btn btn-primary" [class.active]="alarm.repeatOn.mon">
+                <input type="checkbox" [(ngModel)]="alarm.repeatOn.mon"> Mon
+            </label>
+            <label class="btn btn-primary" [class.active]="alarm.repeatOn.tue">
+                <input type="checkbox" [(ngModel)]="alarm.repeatOn.tue"> Tue
+            </label>
+            <label class="btn btn-primary" [class.active]="model.wed">
+                <input type="checkbox" [(ngModel)]="model.wed"> Wed
+            </label>
+            <label class="btn btn-primary" [class.active]="model.thu">
+                <input type="checkbox" [(ngModel)]="model.thu"> Thu
+             </label>
+            <label class="btn btn-primary" [class.active]="model.fri">
+                 <input type="checkbox" [(ngModel)]="model.fri"> Fri
+            </label>
+            <label class="btn btn-primary" [class.active]="model.sat">
+                 <input type="checkbox" [(ngModel)]="model.sat"> Sat
+            </label>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>
