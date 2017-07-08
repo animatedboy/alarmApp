@@ -12,7 +12,7 @@
         </div>
     </div>
     <div>
-        <ngb-timepicker [(ngModel)]="time" [meridian]="meridian"></ngb-timepicker>
+        <ngb-timepicker [(ngModel)]="alarm.time" [meridian]="meridian"></ngb-timepicker>
     </div>
     <div class="form-group row">
         <label for="example-text-input" class="col-8 col-form-label">Repeat</label>
@@ -23,32 +23,17 @@
             </label>
         </div>
     </div>
-    <div class="form-group" *ngIf="isRepeat">
+    <div class="form-group" *ngIf="alarm.isRepeat">
         <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary" [class.active]="alarm.repeatOn.sun">
-               <input type="checkbox" [(ngModel)]="alarm.repeatOn.sun"> Sun
+            
+            <label class="btn btn-primary" *ngFor = "let repeat of repeatOn | keys"  [class.active]="repeatOn[repeat]">
+               <input type="checkbox" [(ngModel)]="repeatOn[repeat]"> {{repeat | titlecase}}
             </label>
-            <label class="btn btn-primary" [class.active]="alarm.repeatOn.mon">
-                <input type="checkbox" [(ngModel)]="alarm.repeatOn.mon"> Mon
-            </label>
-            <label class="btn btn-primary" [class.active]="alarm.repeatOn.tue">
-                <input type="checkbox" [(ngModel)]="alarm.repeatOn.tue"> Tue
-            </label>
-            <label class="btn btn-primary" [class.active]="model.wed">
-                <input type="checkbox" [(ngModel)]="model.wed"> Wed
-            </label>
-            <label class="btn btn-primary" [class.active]="model.thu">
-                <input type="checkbox" [(ngModel)]="model.thu"> Thu
-             </label>
-            <label class="btn btn-primary" [class.active]="model.fri">
-                 <input type="checkbox" [(ngModel)]="model.fri"> Fri
-            </label>
-            <label class="btn btn-primary" [class.active]="model.sat">
-                 <input type="checkbox" [(ngModel)]="model.sat"> Sat
-            </label>
+           
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="saveAlarm(alarm)">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelAlarm()">Cancel</button>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit }      from '@angular/core';
 import { WakeUpService } from './wakeUp.service';
 import {Observable} from 'rxjs/Observable'
+import {Alarm} from './alarmModel'
 
 @Component({
   selector: 'wake-up',
@@ -12,12 +13,26 @@ export class WakeUpComponent implements OnInit  {
  constructor(private wakeUpService:WakeUpService){}
 
  vdo = new wakeUp();
+ 
 
- createAlarm(){
-   this.wakeUpService.createAlarm();
+ createAlarm(vdo){
+   this.wakeUpService.createAlarm(vdo);
+ }
+
+ editAlarm(vdo,alarm,index){
+   this.wakeUpService.editAlarm(vdo,alarm,index);
+ }
+
+ deleteAlarm(vdo,index){
+   this.wakeUpService.deleteAlarm(vdo,index)
+ }
+
+ saveChange(vdo){
+   this.wakeUpService.setAlarms(vdo);
  }
 
  ngOnInit(){
+   this.vdo.alarms = [];
   this.wakeUpService.init(this.vdo);
  }
 
@@ -26,6 +41,6 @@ export class WakeUpComponent implements OnInit  {
 
 export class wakeUp {
   public currentTime :Date;
-  public alarms :Object
+  public alarms :Array<Alarm>
 }
 

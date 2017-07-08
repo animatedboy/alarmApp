@@ -40,8 +40,12 @@ body {
     margin: 50px;
 }
 
-.col-offeset-1 {
-    margin: 0 8.333%;
+.col-offset-1 {
+    margin: 0 16.333%;
+}
+
+.col-offset-2{
+   margin: 0 25%; 
 }
 
 .margin-tp-1 {
@@ -67,12 +71,14 @@ body {
     color: #FFF;
     background: #e44230;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 15px;
+    vertical-align: middle;
 }
 
 .table-format tbody tr td {
     color: #52617a;
     vertical-align: middle;
+    text-align: center;
 }
 
 .table-format tbody tr td p {
@@ -89,6 +95,7 @@ body {
 
 .table-format.table>thead>tr>th {
     vertical-align: middle;
+    text-align: center;
 }
 
 .table-format tr.cust-head th {
@@ -106,7 +113,7 @@ body {
 
 .table-bordered>thead>tr>th {
     border-bottom-width: 1px;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .table-no-border {
@@ -120,6 +127,7 @@ body {
 .table-no-border.table>tbody>tr>td,
 .table-no-border.table>tfoot>tr>td {
     border: none;
+    text-align: center;
 }
 
 .table-right-border.table>thead>tr>th,
@@ -130,6 +138,10 @@ body {
 .table-right-border.table>tfoot>tr>td {
     border: 0;
     border-right: 1px solid #ddd;
+}
+
+.padd-1{
+    padding: 20px;
 }
 
 

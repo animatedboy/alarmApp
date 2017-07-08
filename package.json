@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "A webpack starter for Angular",
     "scripts": {
-        "start": "webpack-dev-server --inline --progress --port 8080",
+        "start": "webpack-dev-server --inline --progress --port 99",
         "test": "karma start",
         "build": "rimraf dist && webpack --config config/webpack.prod.js --bail",
         "dev": "rimraf dist && webpack --config config/webpack.dev.js --bail"
@@ -23,6 +23,7 @@
         "@types/node": "^6.0.73",
         "bootstrap": "^4.0.0-alpha.6",
         "core-js": "^2.4.1",
+        "font-awesome": "^4.7.0",
         "rxjs": "5.0.1",
         "zone.js": "^0.8.4"
     },

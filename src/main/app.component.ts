@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-//import {LoaderComponent} from '../shared/loader/Component/loaderComponent';
+import '../../node_modules/font-awesome/css/font-awesome.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../assets/css/styles.css';
+
 
 
 @Component({

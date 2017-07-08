@@ -1,8 +1,51 @@
-<form class="container-fluid col-offeset-1" name="forgotForm">
+<form class="container-fluid col-offset-1" name="forgotForm">
     <div class="card margin-tp-1 opacity1">
-        <div class="card-block">
-            <h1>{{vdo.currentTime | date:'shortTime'}}</h1>
-            <button class="btn btn-primary" (click)="createAlarm()"> Create Alarm</button>
+        <div class="card-block mx-auto">
+            <h1 class="display-2">{{vdo.currentTime | date:'shortTime'}}</h1>
+            <button class="btn btn-primary col-offset-2" (click)="createAlarm(vdo)"> Create Alarm</button>
         </div>
+    </div>
+    <div>
+        <div class="card margin-tp-1 opacity1 padd-1">
+            <table class="table table-bordered table-format" *ngIf="vdo.alarms.length">
+                <thead>
+                    <tr>
+                        <th>Label</th>
+                        <th>Time</th>
+                        <th>Repeat</th>
+                        <th style="width:20px">Active</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let alarm of vdo.alarms ; index as i">
+                        <td>
+                            <h3>{{alarm.label}}</h3>
+                        </td>
+                        <td>
+                            <h3>{{alarm.time.hour|hour}}:<span *ngIf="alarm.time.minute<10">0</span>{{alarm.time.minute}} <span *ngIf="alarm.time.hour<12;else pmBlock">AM</span><ng-template #pmBlock>PM</ng-template></h3>
+                        </td>
+                        <td><h5 *ngIf="alarm.repeatOn.length; else elseBlock">{{alarm.repeatOn.toString()|titlecase}}</h5>
+                        <ng-template #elseBlock><h5>None</h5></ng-template>
+                        
+                        </td>
+                        <td>
+                            <label class="form-check-label switch pull-right">
+                               <input class="form-check-input" type="checkbox" [(ngModel)]="alarm.isActive" name="isActive" [ngModelOptions]="{standalone: true}" (ngModelChange)="saveChange(vdo)">
+                               <div class="slider round"></div>
+                            </label>
+                        </td>
+                        <td>
+                            <i class="fa fa-pencil-square fa-2x" aria-hidden="true" (click)="editAlarm(vdo,alarm,i)"></i>
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x" aria-hidden="true" (click)="deleteAlarm(vdo,i)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </form>
