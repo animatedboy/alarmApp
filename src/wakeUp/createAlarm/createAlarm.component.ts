@@ -1,13 +1,14 @@
 import {Component, OnInit,Input} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {Alarm} from '../alarmModel'
+import {Alarm} from '../alarmModel';
+import {DialogService} from '../../core/dialog/dialog.service';
 
 @Component({selector: 'createAlarm', templateUrl: './createAlarm.component.html'})
 
 export class CreateAlarmComponent implements OnInit {
     @Input() data;
     @Input() title;
-    constructor(public activeModal : NgbActiveModal) {}
+    constructor(public activeModal : NgbActiveModal,private dialogService:DialogService) {}
     public alarm = new Alarm();
     private tempAlarm="";
     public repeatOn = {
@@ -22,7 +23,8 @@ export class CreateAlarmComponent implements OnInit {
     public meridian = true;
 
     saveAlarm(alarm){
-      alarm.repeatOn=[];
+        if(alarm.time !== null && alarm.time.hour && alarm.time.minute){
+            alarm.repeatOn=[];
       for (var key in this.repeatOn) {
           if (this.repeatOn.hasOwnProperty(key) && this.repeatOn[key]) {
                alarm.repeatOn.push(key);    
@@ -31,6 +33,11 @@ export class CreateAlarmComponent implements OnInit {
       alarm.isActive = true;
       alarm.isRepeat = alarm.repeatOn.length?alarm.isRepeat:false;
       this.activeModal.close(alarm);
+        
+        }else{
+            this.dialogService.alert("Warning","Time and minute are mandatory")
+        }
+      
     }
 
     cancelAlarm(){

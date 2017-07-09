@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {RestProxy} from '../core/restProxy/restProxy.service';
-import {URLCreater,BaseResponse} from '../core/utilities/utility';
+import {URLCreater,BaseResponse,ResponseStatus} from '../core/utilities/utility';
 import {wakeUp} from "./wakeUp.component";
 import {CreateAlarmComponent} from './createAlarm/createAlarm.component';
 import {DialogService} from '../core/dialog/dialog.service';
@@ -37,14 +37,16 @@ export class WakeUpService {
       activeAlarm.forEach((alarm)=>{
         if(alarm.time.hour == hr && alarm.time.minute == min && alarm.isActive ){
             if(!alarm.isRepeat){
-                this.http.getData(this.quotesUrl.createGET({},{})).then((result)=>{
-                     this.dialogService.alert("Alert",result.data.quote+ " - "+result.data.author);
+                 this.http.getData(this.quotesUrl.createGET({},{})).then((result)=>{
+                  let message = result.status === ResponseStatus.Success?result.data.quote+ " - "+result.data.author:"be happy and make others happy-Unkown"
+                     this.dialogService.alert("Alert",message);
               });
               alarm.isActive=false;
               this.setAlarms(vdo);
             }else if(alarm.isRepeat && alarm.repeatOn.indexOf(today)>-1){
-              this.http.getData(this.quotesUrl.createGET({},{})).then((result)=>{
-                     this.dialogService.alert("Alert",result.data.quote+ " - "+result.data.author);
+               this.http.getData(this.quotesUrl.createGET({},{})).then((result)=>{
+                  let message = result.status === ResponseStatus.Success?result.data.quote+ " - "+result.data.author:"be happy and make others happy-Unkown"
+                     this.dialogService.alert("Alert",message);
               });
             }
         }
@@ -81,6 +83,8 @@ export class WakeUpService {
         }).catch((error)=>{
 
         })  
+
+        
 
         
     }
