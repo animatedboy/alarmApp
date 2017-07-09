@@ -30,11 +30,7 @@ export class WakeUpService {
     private checkAlarm(vdo:wakeUp){
       let hr = vdo.currentTime.getHours(),min = vdo.currentTime.getMinutes(),today= this.weekDay[vdo.currentTime.getDay()];
       
-      let activeAlarm = vdo.alarms.filter((alarm)=>{
-          return alarm.isActive;
-      });
-      
-      activeAlarm.forEach((alarm)=>{
+      vdo.alarms.forEach((alarm)=>{
         if(alarm.time.hour == hr && alarm.time.minute == min && alarm.isActive ){
             if(!alarm.isRepeat){
                  this.http.getData(this.quotesUrl.createGET({},{})).then((result)=>{
